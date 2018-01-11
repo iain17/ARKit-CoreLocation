@@ -137,6 +137,12 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         updateEstimatesTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(SceneLocationView.updateLocationData), userInfo: nil, repeats: true)
     }
     
+    public func removeAll() {
+        for location in self.locationNodes {
+            self.removeLocationNode(locationNode: location)
+        }
+    }
+    
     public func pause() {
         session.pause()
         updateEstimatesTimer?.invalidate()
